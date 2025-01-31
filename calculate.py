@@ -29,7 +29,7 @@ def process_input(a, b, c):
 
     html_response = f"""
     <html>
-    <head><title>Assignment 4</title></head>
+    <head></head>
     <body>
     <h1>Python Script Result</h1>
     <h3>Original Values:</h3>

@@ -1,11 +1,17 @@
 <?php
-$x = escapeshellarg($_POST['a']);
-$y = escapeshellarg($_POST['b']);
-$z = escapeshellarg($_POST['c']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['a']) && isset($_POST['b']) && isset($_POST['c'])) {
+        $a = escapeshellarg($_POST['a']);
+        $b = escapeshellarg($_POST['b']);
+        $c = escapeshellarg($_POST['c']);
 
-$command = escapeshellcmd("python3 process_input.py $a $b $c");
-$output = shell_exec($command);
+        $command = "python3 calculate.py $a $b $c";
+        $output = shell_exec($command);
 
-echo "<h2>Assignment 4:</h2>";
-echo "<div>$output</div>";
+        echo "<h2>Calculation Result</h2>";
+        echo $output;
+    } else {
+        echo "<h3>Error: Missing input values.</h3>";
+    }
+}
 ?>
